@@ -1,0 +1,27 @@
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="isLoggedIn()">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!isLoggedIn()">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/register">Register</a>
+      <a class="nav-item nav-link" routerLink="/login">Login</a>
+  </div>
+</nav>
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+</div>
