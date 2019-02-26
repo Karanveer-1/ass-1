@@ -4,7 +4,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Register } from '../model/register';
 
-const baseUrl:string = "https://localhost:44372";
+const baseUrl:string = "https://4870assignment2api.azurewebsites.net";
 
 @Injectable({
   providedIn: 'root'
