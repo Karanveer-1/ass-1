@@ -4,7 +4,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Register } from '../model/register';
 
-const baseUrl:string = "https://4870assignment2api.azurewebsites.net";
+const baseUrl:string = "https://localhost:44372";
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,23 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   register(reg: Register) {
-    return this.http.post<any>(baseUrl + "/api/auth/register", reg).pipe(
-        map(result => {
+    return this.http.post<any>(baseUrl + "/api/auth/register", reg)
+    .pipe(map(result => {
            return result;
-        }),
-        catchError(this.handleError('register()'))
-    );
+      }));
+  }
+
+  isValidUsername(username: string) {
+    let headers = new HttpHeaders();    
+    headers = headers.set('Content-Type', 'application/json');
+    
+    return this.http.post<any>(baseUrl + "/api/auth/username", JSON.stringify(username), {headers : headers})
+      .pipe(map(result => {
+        return result;
+      }));
   }
   
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string) : Observable<any> {
     return this.http.post<any>(baseUrl + "/api/auth/login", {
       "username": username,
       "password": password
@@ -41,12 +49,5 @@ export class UserService {
 
   public isAdmin(): boolean {
     return localStorage.getItem('role') == 'Admin';
-  }
-
-  handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-            console.error(error);
-            return of(result as T);
-          };
   }
 }

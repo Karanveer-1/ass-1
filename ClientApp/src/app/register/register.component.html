@@ -54,4 +54,5 @@
     <div class="form-group">
         <button class="btn btn-primary">Register</button>
     </div>
+    <div *ngIf="invalidUsername" class="alert alert-danger">Username is already taken. Please try another!</div>
 </form>

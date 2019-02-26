@@ -88,6 +88,19 @@ namespace Khanna_Seltzer_ass1.Controllers
 
             return Unauthorized();
         }
+
+        [Route("username")]
+        [HttpPost]
+        public async Task<ActionResult> checkValidUsername([FromBody] String username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user != null)
+            {
+                return Ok(new { valid = true });
+            }
+
+            return Ok(new { valid = false });
+        }
     }
 }
 

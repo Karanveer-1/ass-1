@@ -44,10 +44,11 @@ export class LoginComponent implements OnInit {
                     console.log(data)
                     this.loading = false;
                     this.authFailed = "";
-                    console.log("pass")
+                    console.log("login pass, navigating")
                     this.router.navigate(['/']);
                 },
                 error => {
+                    console.log("login fail, navigating")
                     this.authFailed = error;
                     this.loading = false;
                 });

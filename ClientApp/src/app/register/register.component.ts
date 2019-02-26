@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Register } from '../model/register';
 
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
     model:Register;
+    invalidUsername = false;
 
     constructor(private formBuilder: FormBuilder,
         private service:UserService,
@@ -33,11 +34,18 @@ export class RegisterComponent implements OnInit {
 
     get f() { return this.registerForm.controls; }
 
-    onSubmit() {
+    async onSubmit() {
         this.submitted = true;
         if (this.registerForm.invalid) {
             return;
         }
+
+        if (await this.isValidUsername(this.f.username.value)) {
+            this.invalidUsername = true;
+            return;
+          } else {
+            this.invalidUsername = false;
+          }
 
         this.model = new Register(this.f.username.value, this.f.email.value, this.f.password.value,
         this.f.firstName.value, this.f.lastName.value, this.f.country.value, this.f.phoneNumber.value);
@@ -46,6 +54,7 @@ export class RegisterComponent implements OnInit {
           .pipe(first())
           .subscribe(
             data => {
+                console.log("register pass, navigating");
                 console.log(data);
                 this.router.navigate(['/login']);
             },
@@ -54,6 +63,16 @@ export class RegisterComponent implements OnInit {
             });
         
     }
-
-
+   
+    private async isValidUsername(username: string) {
+        return await this.service
+          .isValidUsername(username)
+          .pipe(map(
+            data => {
+                return data.valid ? true : false;
+            },
+            error => {
+                return false;
+            })).toPromise();
+      }
 }
