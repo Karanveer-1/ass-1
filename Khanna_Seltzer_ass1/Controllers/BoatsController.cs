@@ -13,6 +13,7 @@ namespace Khanna_Seltzer_ass1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AuthPolicy")]
     public class BoatsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
