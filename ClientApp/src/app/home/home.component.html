@@ -1,0 +1,33 @@
+  <h3>Boats</h3>
+  <table class="table table-hover">
+    <thead>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Picture</th>
+      <th scope="col">Length (ft)</th>
+      <th scope="col">Make</th>
+      <th scope="col">Description</th>
+      <th scope="col" *ngIf="isAdmin">Edit</th>
+      <th scope="col">View</th>
+      <th scope="col" *ngIf="isAdmin">Delete</th>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let b of boats">
+        <td>{{b.boatId}}</td>
+        <td>{{b.boatName}}</td>
+        <td>{{b.picture}}</td>
+        <td>{{b.lengthInFeet}}</td>
+        <td>{{b.make}}</td>
+        <td>{{b.description}}</td>
+        <td *ngIf="isAdmin">
+          <button type="button" (click)="setEditBoat(b)">Edit</button>
+        </td>
+        <td>
+          <button type="button" (click)="setViewBoat(b)">View</button>
+        </td>
+        <td *ngIf="isAdmin">
+          <button type="button"  (click)="deleteBoat(b.boatId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

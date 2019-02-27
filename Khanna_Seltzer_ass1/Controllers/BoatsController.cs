@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Khanna_Seltzer_ass1.Data;
 using Khanna_Seltzer_ass1.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace Khanna_Seltzer_ass1.Controllers
 {

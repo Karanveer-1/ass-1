@@ -38,7 +38,7 @@ export class CreateBoatComponent implements OnInit {
       data => { 
         console.log("Boats retrieved");
         console.log(data);
-        for (let d in data[0][0]) {
+        for (let d in data[0]) {
           console.log(Object.values(d));
         }
         

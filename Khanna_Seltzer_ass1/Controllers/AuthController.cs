@@ -73,6 +73,7 @@ namespace Khanna_Seltzer_ass1.Controllers
                 var token = new JwtSecurityToken(
                     issuer: _configuration["Jwt:Site"],
                     audience: _configuration["Jwt:Site"],
+                    claims: claims,
                     expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
                     signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
                 );

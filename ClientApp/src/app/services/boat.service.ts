@@ -6,7 +6,10 @@ import { Router } from '@angular/router';
 import { Boat } from '../model/boat';
 import { UserService } from './user.service';
 
-const endpoint = "https://4870assignment2api.azurewebsites.net/api/boats/";
+
+//const endpoint = "https://localhost:44372/api/boats/";
+const endpoint:string = "https://4870assignment2api.azurewebsites.net/api/boats/";
+
 
 @Injectable({
   providedIn: 'root'

@@ -16,7 +16,8 @@ import { CreateBoatComponent } from './create-boat/create-boat.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    CreateBoatComponent,
+    CreateBoatComponent
+
   ],
   imports: [
     BrowserModule,
