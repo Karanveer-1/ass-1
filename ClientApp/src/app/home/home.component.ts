@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Boat } from '../model/boat';
 import { BoatService } from '../services/boat.service';
 import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -21,7 +20,9 @@ export class HomeComponent implements OnInit {
   showEdit : Boolean = false;
   public editor = ClassicEditor;
 
-  constructor(private service: BoatService, private auth: UserService) {}
+  constructor(private service: BoatService, private auth: UserService) 
+  {
+  }
 
 
   ngOnInit() {

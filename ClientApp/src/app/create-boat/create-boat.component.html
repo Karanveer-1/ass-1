@@ -4,45 +4,14 @@
 <input type="text" class="form-control" [(ngModel)]="this.newBoat.boatName"/><br/>
 <label>Length (ft)</label>
 <input required type="text" class="form-control" [(ngModel)]="this.newBoat.lengthInFeet"/><br/>
+<label>Picture</label>
+<input required type="text" class="form-control" [(ngModel)]="this.newBoat.picture"/><br/>
 <label>Make</label>
 <input required type="text" class="form-control" [(ngModel)]="this.newBoat.make"/><br/>
 <label>Description</label>
-<ckeditor required [editor]="editor" [(ngModel)]="this.newBoat.description"></ckeditor>
-<!-- <input type="text" class="form-control" [(ngModel)]="this.newBoat.description"/><br/> -->
-<label>Picture</label>
-<input required type="text" class="form-control" [(ngModel)]="this.newBoat.imageUrl"/><br/>
+<ckeditor required [editor]="editor" [(ngModel)]="this.newBoat.description"></ckeditor><br/>
+
 
 <div class="form-group">
   <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
 </div>
-
-<!-- <form [formGroup]="createBoat" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="boatId">Boat Id</label>
-        <input type="number" formControlName="boatId" class="form-control"/>
-    </div>
-    <div class="form-group">
-      <label for="boatName">Boat Name</label>
-      <input type="text" formControlName="boatName" class="form-control"/>
-    </div>
-    <div class="form-group">
-      <label for="picture">Image URL</label>
-      <input type="text" formControlName="picture" class="form-control"/>
-    </div>
-    <div class="form-group">
-      <label for="lengthInFeet">Length (ft.)</label>
-      <input type="text" formControlName="make" class="form-control"/>
-    </div>
-    <div class="form-group">
-      <label for="make">Make</label>
-      <input type="text" formControlName="make" class="form-control"/>
-    </div>
-    <div class="form-group">
-      <label for="boatId">Boat Id</label>
-      <input type="number" formControlName="boatId" class="form-control"/>
-    </div> 
-
-
-
-</form> -->
-

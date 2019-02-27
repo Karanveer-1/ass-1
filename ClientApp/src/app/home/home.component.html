@@ -17,13 +17,13 @@
         <td>{{b.lengthInFeet}}</td>
         <td>{{b.make}}</td>
         <td *ngIf="isAdmin">
-          <button type="button" (click)="editClickedBoat(b)">Edit</button>
+          <button type="button" class="btn" (click)="editClickedBoat(b)">Edit</button>
         </td>
         <td>
-          <button type="button" (click)="viewClickedBoat(b)">View</button>
+          <button type="button" class="btn" (click)="viewClickedBoat(b)">View</button>
         </td>
         <td *ngIf="isAdmin">
-          <button type="button"  (click)="deleteBoat(b.boatId)">Delete</button>
+          <button type="button" class="btn"  (click)="deleteBoat(b.boatId)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -69,7 +69,7 @@
   <div class="modal-body">
     <h5>Boat Name</h5>
     <div class="form-group">
-      <input ng-required="true" type="text" class="form-control" [(ngModel)]="editBoat.boatName">
+      <input type="text" class="form-control" [(ngModel)]="editBoat.boatName">
     </div>
     <hr>
     <h5>Picture</h5>

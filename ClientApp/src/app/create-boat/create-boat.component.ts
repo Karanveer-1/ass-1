@@ -14,9 +14,6 @@ import {Location} from '@angular/common';
   styleUrls: ['./create-boat.component.css']
 })
 
-
-
-
 export class CreateBoatComponent implements OnInit {
   boats:Boat[] = [];
   newBoatId:number = 0;
@@ -38,9 +35,17 @@ export class CreateBoatComponent implements OnInit {
     });
   }
 
-  // onSubmit() {
-  //   this.service.addBoat(this.newBoat);
-  //   this._location.back;
-  // }
+  onSubmit() {
+    
+    console.log(this.newBoat.boatId + this.newBoat.boatName)
+    this.service.addBoat(this.newBoat)
+      .pipe(first())
+      .subscribe((r: any) => {
+        this.newBoat = new Boat();
+        this.router.navigate(['/']);
+      });
+  }
+
+  
 
 }
