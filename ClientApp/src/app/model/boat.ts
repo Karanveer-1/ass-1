@@ -4,7 +4,8 @@ export class Boat {
     public lengthInFeet: number;
     public make: string;
     public description: string;
-    
+    public imageUrl:string;
+
     constructor() { }
   }
   

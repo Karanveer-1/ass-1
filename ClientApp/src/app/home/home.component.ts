@@ -12,12 +12,28 @@ import { first } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
+  
 
-  constructor(
+  constructor( 
+    private boatService:BoatService
   ) {
+    
   }
 
   ngOnInit() {
+    console.log("Getting Boats");
+    var boats = this.boatService.getBoats()
+    .pipe(first())
+    .subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+    
+
   }
 
 }

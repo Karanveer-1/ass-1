@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Boat } from '../model/boat';
 import { UserService } from './user.service';
 
-const endpoint = "https://localhost:44372/api/boats/";
+const endpoint = "https://4870assignment2api.azurewebsites.net/api/boats/";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,6 @@ const endpoint = "https://localhost:44372/api/boats/";
 export class BoatService {
 
   //private jwtHelper: JwtHelperService;
-
   constructor(
     private http: HttpClient,
     private authService: UserService,
