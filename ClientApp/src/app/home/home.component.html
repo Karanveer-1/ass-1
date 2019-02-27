@@ -17,13 +17,13 @@
         <td>{{b.lengthInFeet}}</td>
         <td>{{b.make}}</td>
         <td *ngIf="isAdmin">
-          <button type="button" class="btn" (click)="editClickedBoat(b)">Edit</button>
+          <button type="button" class="btn btn-link" (click)="editClickedBoat(b)">Edit</button>
         </td>
         <td>
-          <button type="button" class="btn" (click)="viewClickedBoat(b)">View</button>
+          <button type="button" class="btn btn-link" (click)="viewClickedBoat(b)">View</button>
         </td>
         <td *ngIf="isAdmin">
-          <button type="button" class="btn"  (click)="deleteBoat(b.boatId)">Delete</button>
+          <button type="button" class="btn btn-link"  (click)="deleteBoat(b.boatId)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -32,8 +32,8 @@
 
 <div *ngIf="showView">
   <div class="modal-header">
-    <h4 class="modal-title">{{viewBoat?.boatName}}</h4>
-    <button type="button" (click)="back()">Back</button>
+    <h3 class="modal-title">{{viewBoat?.boatName}}</h3>
+    <button type="button" class="btn btn-info" (click)="back()">Back</button>
   </div>
 
   <div class="modal-body">
@@ -59,10 +59,10 @@
 
 <div *ngIf="showEdit">
   <div class="modal-header">
-    <h4 class="modal-title">Edit Boat</h4>
+    <h3 class="modal-title">Edit Boat</h3>
     <div class="ml-auto">
-      <button type="button" style="margin-right: 1em;" (click)="saveEditBoat()">Save</button>
-      <button type="button" (click)="cancelEdit()">Cancel</button>
+      <button type="button" class="btn btn-info" style="margin-right: 1em;" (click)="saveEditBoat()">Save</button>
+      <button type="button" class="btn btn-info" (click)="cancelEdit()">Cancel</button>
     </div>
   </div>
 
