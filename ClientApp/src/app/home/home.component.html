@@ -1,12 +1,11 @@
+  <div *ngIf="showTable">
   <h3>Boats</h3>
   <table class="table table-hover">
     <thead>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
-      <th scope="col">Picture</th>
       <th scope="col">Length (ft)</th>
       <th scope="col">Make</th>
-      <th scope="col">Description</th>
       <th scope="col" *ngIf="isAdmin">Edit</th>
       <th scope="col">View</th>
       <th scope="col" *ngIf="isAdmin">Delete</th>
@@ -15,15 +14,13 @@
       <tr scope="row" *ngFor="let b of boats">
         <td>{{b.boatId}}</td>
         <td>{{b.boatName}}</td>
-        <td>{{b.picture}}</td>
         <td>{{b.lengthInFeet}}</td>
         <td>{{b.make}}</td>
-        <td>{{b.description}}</td>
         <td *ngIf="isAdmin">
-          <button type="button" (click)="setEditBoat(b)">Edit</button>
+          <button type="button" (click)="editClickedBoat(b)">Edit</button>
         </td>
         <td>
-          <button type="button" (click)="setViewBoat(b)">View</button>
+          <button type="button" (click)="viewClickedBoat(b)">View</button>
         </td>
         <td *ngIf="isAdmin">
           <button type="button"  (click)="deleteBoat(b.boatId)">Delete</button>
@@ -31,3 +28,69 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<div *ngIf="showView">
+  <div class="modal-header">
+    <h4 class="modal-title">{{viewBoat?.boatName}}</h4>
+    <button type="button" (click)="back()">Back</button>
+  </div>
+
+  <div class="modal-body">
+    <h5>Id</h5>
+    <p>{{viewBoat?.boatId}}</p>
+    <hr>
+    <h5>Boat Name</h5>
+    <p>{{viewBoat?.boatName}}</p>
+    <hr>
+    <h5>Picture</h5>
+    <img class="preview-img" src={{viewBoat?.picture}}>
+    <hr>
+    <h5>Length (ft)</h5>
+    <p>{{viewBoat?.lengthInFeet}}</p>
+    <hr>
+    <h5>Make</h5>
+    <p>{{viewBoat?.make}}</p>
+    <hr>
+    <h5>Description</h5>
+    <div [innerHTML]="viewBoat.description"></div>
+  </div>
+</div>
+
+<div *ngIf="showEdit">
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Boat</h4>
+    <div class="ml-auto">
+      <button type="button" style="margin-right: 1em;" (click)="saveEditBoat()">Save</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+
+  <div class="modal-body">
+    <h5>Boat Name</h5>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="editBoat.boatName">
+    </div>
+    <hr>
+    <h5>Picture</h5>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="editBoat.picture">
+    </div>
+    <hr>
+    <h5>Length (ft)</h5>
+    <div class="form-group">
+      <input type="number" class="form-control" [(ngModel)]="editBoat.lengthInFeet">
+    </div>
+    <hr>
+    <h5>Make</h5>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="editBoat.make">
+    </div>
+    <hr>
+    <h5>Description</h5>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="editBoat.description">
+    </div>
+  </div>
+
+</div>
