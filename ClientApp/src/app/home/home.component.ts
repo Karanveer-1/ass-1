@@ -4,7 +4,7 @@ import { BoatService } from '../services/boat.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { ViewComponent } from '../view/view.component';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   showTable: Boolean = true;
   showView : Boolean = false;
   showEdit : Boolean = false;
+  public editor = ClassicEditor;
 
   constructor(private service: BoatService, private auth: UserService) {}
 

@@ -9,9 +9,8 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="isLoggedIn()">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link">Add Boat</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
         <a class="nav-item nav-link" routerLink="/create-boat"><i class="far fa-plus-square"></i> Add Boat</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!isLoggedIn()">

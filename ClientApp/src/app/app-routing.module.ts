@@ -26,6 +26,7 @@ const routes: Routes = [
   {
     path: 'create-boat',
     component: CreateBoatComponent,
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' }
 ];
