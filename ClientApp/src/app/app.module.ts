@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CreateBoatComponent } from './create-boat/create-boat.component';
 
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,7 @@ import { CreateBoatComponent } from './create-boat/create-boat.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    CKEditorModule,
     HttpClientModule,
     FormsModule
   ],

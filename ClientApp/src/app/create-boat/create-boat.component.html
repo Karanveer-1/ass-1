@@ -1,9 +1,16 @@
-<p>
-  create-boat works!
-</p>
-
 <h3>Create New Boat</h3>
 
+<label>Boat Name</label>
+<input type="text" class="form-control" [(ngModel)]="this.newBoat.boatName"/><br/>
+<label>Length (ft)</label>
+<input required type="text" class="form-control" [(ngModel)]="this.newBoat.lengthInFeet"/><br/>
+<label>Make</label>
+<input required type="text" class="form-control" [(ngModel)]="this.newBoat.make"/><br/>
+<label>Description</label>
+<ckeditor required [editor]="editor" [(ngModel)]="this.newBoat.description"></ckeditor>
+<!-- <input type="text" class="form-control" [(ngModel)]="this.newBoat.description"/><br/> -->
+<label>Picture</label>
+<input required type="text" class="form-control" [(ngModel)]="this.newBoat.imageUrl"/><br/>
 
 
 <!-- <form [formGroup]="createBoat" (ngSubmit)="onSubmit()">
