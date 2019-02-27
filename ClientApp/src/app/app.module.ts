@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CreateBoatComponent } from './create-boat/create-boat.component';
+import { EditComponent } from './edit/edit.component';
+import { ViewComponent } from './view/view.component';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
@@ -18,7 +20,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    CreateBoatComponent
+    CreateBoatComponent,
+    EditComponent,
+    ViewComponent
 
   ],
   imports: [

@@ -4,6 +4,7 @@ import { BoatService } from '../services/boat.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { ViewComponent } from '../view/view.component';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,12 @@ import { first } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
   boats:Boat[] = [];
   isAdmin : Boolean;
+  viewBoat: Boat = new Boat();
+  editBoat: Boat = new Boat();
+  showTable: Boolean = true;
+  showView : Boolean = false;
+  showEdit : Boolean = false;
 
-  
   constructor(private service: BoatService, private auth: UserService) {}
 
 
@@ -24,23 +29,7 @@ export class HomeComponent implements OnInit {
     this.service.getBoats().subscribe((data: []) => {
       this.boats = data;
     });
-    // console.log("Getting Boats");
-    // var boats = this.service.getBoats()
-    // .pipe(first())
-    // .subscribe(
-    //   data => {
-    //     console.log(data);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    //)
   }
-
-
-  // ngOnInit() {
-
-  // }
 
 
   deleteBoat(id: number) {
@@ -48,6 +37,41 @@ export class HomeComponent implements OnInit {
       this.boats.splice(this.boats.indexOf(this.boats.find(b => b.boatId === id)), 1);
     }));
 
+  }
+
+  viewClickedBoat(boat: Boat) {
+    this.showView = true;
+    this.showTable = false;
+    this.viewBoat = boat;
+  }
+
+  editClickedBoat(boat : Boat) {
+    this.showEdit = true;
+    this.showTable = false;
+    this.editBoat = boat;
+  }
+
+  cancelEdit() {
+    this.showEdit = false;
+    this.showTable = true;
+    this.editBoat = null;
+  }
+
+  saveEditBoat() {
+    this.service.updateBoat(this.editBoat.boatId, this.editBoat)
+      .pipe(first())
+      .subscribe((r: any) => {
+        this.boats[this.boats.indexOf(this.boats.find(b => b.boatId === this.editBoat.boatId))] = this.editBoat;
+        this.showEdit = false;
+        this.showTable = true;
+        this.editBoat = null;
+      });
+  }
+
+  back() {
+    this.showView = false;
+    this.showTable = true;
+    this.viewBoat = null;
   }
 
 }
