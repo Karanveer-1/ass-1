@@ -12,6 +12,9 @@
 <label>Picture</label>
 <input required type="text" class="form-control" [(ngModel)]="this.newBoat.imageUrl"/><br/>
 
+<div class="form-group">
+  <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+</div>
 
 <!-- <form [formGroup]="createBoat" (ngSubmit)="onSubmit()">
     <div class="form-group">

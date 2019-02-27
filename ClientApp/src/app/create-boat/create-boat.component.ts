@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Boat } from '../model/boat';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class CreateBoatComponent implements OnInit {
   public editor = ClassicEditor;
 
   constructor(
+    private _location: Location,
     private formBuilder: FormBuilder,
     private service: BoatService,
     private router: Router
@@ -34,28 +36,11 @@ export class CreateBoatComponent implements OnInit {
     this.service.getBoats().subscribe((data: []) => {
       this.boats = data;
     });
-
-    
-
-    // this.boat = new Boat();
-    // var boatlist:Boat[];
-    // var boats = this.boatService.getBoats()
-    // .pipe()
-    // .subscribe(
-    //   data => { 
-    //     console.log("Boats retrieved");
-    //     console.log(data);
-    //     for (let d in data[0]) {
-    //       console.log(Object.values(d));
-    //     }
-        
-    //           },
-    //   error => {
-    //     console.log(error);
-    //   });
-
   }
 
-  
+  // onSubmit() {
+  //   this.service.addBoat(this.newBoat);
+  //   this._location.back;
+  // }
 
 }
