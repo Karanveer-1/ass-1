@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Khanna_Seltzer_ass1.Data.Migrations
+namespace Khanna_Seltzer_ass1.Migrations
 {
-    public partial class mig_1 : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,6 +48,23 @@ namespace Khanna_Seltzer_ass1.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Boat",
+                columns: table => new
+                {
+                    BoatId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BoatName = table.Column<string>(nullable: false),
+                    Picture = table.Column<string>(nullable: false),
+                    LengthInFeet = table.Column<string>(nullable: false),
+                    Make = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Boat", x => x.BoatId);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,6 +229,9 @@ namespace Khanna_Seltzer_ass1.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Boat");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

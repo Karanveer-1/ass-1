@@ -1,4 +1,0 @@
-Front end: Everything needs to be done
-
-
-Back end: check unique Username, Test everything from post man

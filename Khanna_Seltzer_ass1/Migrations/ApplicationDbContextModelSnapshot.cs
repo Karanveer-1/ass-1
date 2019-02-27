@@ -4,16 +4,14 @@ using Khanna_Seltzer_ass1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Khanna_Seltzer_ass1.Data.Migrations
+namespace Khanna_Seltzer_ass1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190210023733_mig_1")]
-    partial class mig_1
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,6 +74,32 @@ namespace Khanna_Seltzer_ass1.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Khanna_Seltzer_ass1.Models.Boat", b =>
+                {
+                    b.Property<int>("BoatId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BoatName")
+                        .IsRequired();
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<string>("LengthInFeet")
+                        .IsRequired();
+
+                    b.Property<string>("Make")
+                        .IsRequired();
+
+                    b.Property<string>("Picture")
+                        .IsRequired();
+
+                    b.HasKey("BoatId");
+
+                    b.ToTable("Boat");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
